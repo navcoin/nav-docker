@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-MAINTAINER Sebastian Ponti <sebaponti@gmail.com>
+MAINTAINER Paul Sanderson
 
 ARG USER_ID
 ARG GROUP_ID
