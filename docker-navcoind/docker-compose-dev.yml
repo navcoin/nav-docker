@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  navcoind:
+    build: .
+    command: /bin/bash ./navcoind_testnet.sh
+    ports:
+      - 44444:44444
+      - 44445:44445
+      - 44440:44440

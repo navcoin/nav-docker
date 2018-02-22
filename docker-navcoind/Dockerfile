@@ -59,8 +59,11 @@ RUN export BDB_FOLDER="/usr/local/berkeley-db-4.8" && cd /tmp \
 # Copy files
 #ADD ./conf/apache2.conf /etc/apache2/
 #ADD ./conf/navpi.conf /etc/apache2/sites-available/
-ADD ./bin /usr/local/bin
-ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+#ADD ./bin /usr/local/bin
+#ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+
+ADD navcoind_testnet.sh ./navcoind_testnet.sh
+
 
 ## Create ssl certificate
 #RUN mkdir /etc/apache2/ssl && cd /etc/apache2/ssl \
