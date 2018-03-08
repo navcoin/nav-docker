@@ -125,6 +125,5 @@ ADD navcoind_testnet.sh ./navcoind_testnet.sh
 #RUN a2ensite navpi.conf && a2dissite 000-default.conf
 
 VOLUME ["/navcoin"]
-EXPOSE 44440 44444 44445
 #ENTRYPOINT ["docker-entrypoint"]
 CMD ["/bin/bash"]
