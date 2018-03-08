@@ -1,5 +1,7 @@
 FROM ubuntu:xenial
-MAINTAINER Paul Sanderson
+
+LABEL maintainer.0="Paul Sanderson" \
+	maintainer.1="Nick Vanbaelen"
 
 ARG USER_ID
 ARG GROUP_ID
