@@ -1,10 +1,14 @@
-version: "2"
+version: "3"
 
 services:
   navcoind:
-    build: .
-    command: /bin/bash ./navcoind_testnet.sh
+    build:
+        context: .
+        args:
+            USER_ID: 1000
+            GROUP_ID: 1000
     ports:
       - 44444:44444
       - 44445:44445
       - 44440:44440
+    command: /bin/bash ./navcoind_testnet.sh
