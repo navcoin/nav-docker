@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  navcoind:
+  testnet:
     build:
         context: .
         args:
@@ -15,4 +15,5 @@ services:
       - "44440"
       - "44444"
       - "44445"
-    command: /bin/bash ./navcoind_testnet.sh
+    command:
+      - "navcoind -testnet -rpcuser=user -rpcpassword=hi -rpcallowip=0.0.0.0/0"

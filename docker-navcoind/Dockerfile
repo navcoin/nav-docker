@@ -108,7 +108,6 @@ RUN rm -fr /tmp/*
 #ADD ./conf/navpi.conf /etc/apache2/sites-available/
 #ADD ./bin /usr/local/bin
 #ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-ADD navcoind_testnet.sh ./navcoind_testnet.sh
 
 #--------------------------------------------------------------------------------
 ## Create ssl certificate
@@ -126,6 +125,4 @@ ADD navcoind_testnet.sh ./navcoind_testnet.sh
 #RUN a2enmod rewrite && a2enmod php5 && a2enmod ssl
 #RUN a2ensite navpi.conf && a2dissite 000-default.conf
 
-VOLUME ["/navcoin"]
-#ENTRYPOINT ["docker-entrypoint"]
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
