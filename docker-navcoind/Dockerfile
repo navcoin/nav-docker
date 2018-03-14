@@ -1,27 +1,15 @@
 FROM ubuntu:xenial
 
 LABEL maintainer.0="Paul Sanderson" \
-	maintainer.1="Nick Vanbaelen"
-
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-
-ARG NAV_BRANCH
-ARG NAV_REPO=https://github.com/NAVCoin/navcoin-core.git
-
-ARG GOSU_URL=https://github.com/tianon/gosu/releases/download/
-ARG GOSU_VER=1.9
-
-ARG BDB_URL=http://download.oracle.com/berkeley-db
-ARG BDB_VER=db-4.8.30.NC
-ARG BDB_PKG=${BDB_VER}.tar.gz
-ARG BDB_CHK=12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef
-ARG BDB_DIR=/usr/local/berkeley-db-4.8
+      maintainer.1="Nick Vanbaelen"
 
 #--------------------------------------------------------------------------------
 # Add user and group first to make sure their IDs get assigned consistently,
 # regardless of whatever dependencies get added
 #--------------------------------------------------------------------------------
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
 RUN groupadd -g ${GROUP_ID} navcoin
 RUN useradd -u ${USER_ID} -g navcoin -s /bin/bash -m -d /navcoin navcoin
 
@@ -59,6 +47,9 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 #--------------------------------------------------------------------------------
 # Install gosu
 #--------------------------------------------------------------------------------
+ARG GOSU_URL=https://github.com/tianon/gosu/releases/download/
+ARG GOSU_VER=1.9
+
 RUN gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
 RUN curl -o /usr/local/bin/gosu -fSL ${GOSU_URL}/${GOSU_VER}/gosu-$(dpkg --print-architecture)
 RUN curl -o /usr/local/bin/gosu.asc -fSL ${GOSU_URL}/${GOSU_VER}/gosu-$(dpkg --print-architecture).asc
@@ -69,6 +60,12 @@ RUN chmod +x /usr/local/bin/gosu
 #--------------------------------------------------------------------------------
 # Build + install Berkeley DB
 #--------------------------------------------------------------------------------
+ARG BDB_URL=http://download.oracle.com/berkeley-db
+ARG BDB_VER=db-4.8.30.NC
+ARG BDB_PKG=${BDB_VER}.tar.gz
+ARG BDB_CHK=12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef
+ARG BDB_DIR=/usr/local/berkeley-db-4.8
+
 WORKDIR /tmp
 RUN mkdir -p ${BDB_DIR}
 RUN wget "${BDB_URL}/${BDB_PKG}" -q
@@ -85,6 +82,9 @@ RUN make install
 #--------------------------------------------------------------------------------
 # Build + install navcoind
 #--------------------------------------------------------------------------------
+ARG NAV_BRANCH
+ARG NAV_REPO=https://github.com/NAVCoin/navcoin-core.git
+
 WORKDIR /tmp
 RUN git clone -b ${NAV_BRANCH} ${NAV_REPO}
 
