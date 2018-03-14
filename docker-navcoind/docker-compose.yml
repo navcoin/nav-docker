@@ -5,8 +5,7 @@ services:
     build:
         context: .
         args:
-            USER_ID: 1000
-            GROUP_ID: 1000
+            NAV_BRANCH: v4.1.1
     ports:
       - 44440:44440
       - 44444:44444

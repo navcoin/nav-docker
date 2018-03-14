@@ -3,10 +3,10 @@ FROM ubuntu:xenial
 LABEL maintainer.0="Paul Sanderson" \
 	maintainer.1="Nick Vanbaelen"
 
-ARG USER_ID
-ARG GROUP_ID
+ARG USER_ID=1000
+ARG GROUP_ID=1000
 
-ARG NAV_BRANCH=v4.1.0
+ARG NAV_BRANCH
 ARG NAV_REPO=https://github.com/NAVCoin/navcoin-core.git
 
 ARG GOSU_URL=https://github.com/tianon/gosu/releases/download/
