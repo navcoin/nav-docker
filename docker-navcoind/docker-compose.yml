@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  testnet:
+    build:
+        context: .
+        args:
+            NAV_BRANCH: v4.1.1
+    ports:
+      - 44440:44440
+      - 44444:44444
+      - 44445:44445
+    expose:
+      - "44440"
+      - "44444"
+      - "44445"
+    command:
+      - "navcoind -testnet -rpcuser=user -rpcpassword=hi -rpcallowip=0.0.0.0/0"
