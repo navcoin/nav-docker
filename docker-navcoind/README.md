@@ -36,10 +36,14 @@ The default build uses the current release branch. If you're testing out a branc
 save `docker-compose.yml` and run the following to rebuild and start service
 > docker-compose up --build
 
-### command-line configuration
+### commands/overrides
 
-override the default NAV_BRANCH
+override branch, build project, run service
 > NAV_BRANCH=branch-name docker-compose up --build
 
-enable tests
+enable tests, build project
 > CONFIGURE_FLAGS=--enable-tests docker-compose up --build
+
+override branch, enable tests, build project, run service
+> NAV_BRANCH=branch-name; CONFIGURE_FLAGS=--enable-tests; docker-compose up --build
+
