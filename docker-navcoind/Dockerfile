@@ -82,6 +82,9 @@ RUN make install
 #--------------------------------------------------------------------------------
 # Build + install navcoind
 #--------------------------------------------------------------------------------
+ARG CONFIGURE_FLAGS
+ARG MAKE_FLAGS
+ARG MAKE_INSTALL_FLAGS
 ARG NAV_BRANCH
 ARG NAV_REPO=https://github.com/NAVCoin/navcoin-core.git
 
@@ -94,9 +97,10 @@ RUN ./configure LDFLAGS="-L${BDB_DIR}/lib/" \
                 CPPFLAGS="-I${BDB_DIR}/include/" \
                 --enable-hardening \
                 --without-gui \
-                --enable-upnp-default
-RUN make
-RUN make install
+                --enable-upnp-default \
+                ${CONFIGURE_FLAGS}
+RUN make ${MAKE_FLAGS}
+RUN make install ${MAKE_INSTALL_FLAGS}
 
 WORKDIR /
 RUN rm -fr /tmp/*
