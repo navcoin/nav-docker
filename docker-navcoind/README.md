@@ -22,7 +22,8 @@ This file describes the parameters used for running the Docker service. From thi
 - navcoin-core branch used for the build
 - parameters passed to navcoind (by default, this service spawns a navcoin testnet daemon)
 
-### Overriding default build branch
+**Overriding default branch**
+
 The default build uses the current release branch. If you're testing out a branch or reviewing code on a branch in PR, you can change the NAV_BRANCH in `docker-compose.yml`
 
     services:
@@ -32,11 +33,13 @@ The default build uses the current release branch. If you're testing out a branc
             args:
                 NAV_BRANCH: branch-name
 
-- change/save the NAV_BRANCH to the branch you're reviewing/testing
-- run `docker-compose up --build` to build out that branch and start the new image
+save `docker-compose.yml` and run the following to rebuild and start service
+> docker-compose up --build
 
-**Direct shell override**
+### command-line configuration
 
-You can also just override the NAV_BRANCH directly in your shell command as follows:
+override the default NAV_BRANCH
+> NAV_BRANCH=branch-name docker-compose up --build
 
-    NAV_BRANCH=branch-name docker-compose up --build
+enable tests
+> CONFIGURE_FLAGS=--enable-tests docker-compose up --build
