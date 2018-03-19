@@ -65,6 +65,7 @@ ARG BDB_VER=db-4.8.30.NC
 ARG BDB_PKG=${BDB_VER}.tar.gz
 ARG BDB_CHK=12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef
 ARG BDB_DIR=/usr/local/berkeley-db-4.8
+ARG CONFIGURE_FLAGS
 
 WORKDIR /tmp
 RUN mkdir -p ${BDB_DIR}
@@ -82,7 +83,6 @@ RUN make install
 #--------------------------------------------------------------------------------
 # Build + install navcoind
 #--------------------------------------------------------------------------------
-ARG CONFIGURE_FLAGS
 ARG MAKE_FLAGS
 ARG MAKE_INSTALL_FLAGS
 ARG NAV_BRANCH
