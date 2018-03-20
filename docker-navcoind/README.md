@@ -21,3 +21,29 @@ To run the service entering an interactive shell, run the command below (develop
 This file describes the parameters used for running the Docker service. From this you can see that:
 - navcoin-core branch used for the build
 - parameters passed to navcoind (by default, this service spawns a navcoin testnet daemon)
+
+**Overriding default branch**
+
+The default build uses the current release branch. If you're testing out a branch or reviewing code on a branch in PR, you can change the NAV_BRANCH in `docker-compose.yml`
+
+    services:
+      testnet:
+        build:
+            context: .
+            args:
+                NAV_BRANCH: branch-name
+
+save `docker-compose.yml` and run the following to rebuild and start service
+> docker-compose up --build
+
+### commands/overrides
+
+override branch, build project, run service
+> NAV_BRANCH=branch-name docker-compose up --build
+
+enable tests, build project
+> CONFIGURE_FLAGS=--enable-tests docker-compose up --build
+
+override branch, enable tests, build project, run service
+> NAV_BRANCH=branch-name; CONFIGURE_FLAGS=--enable-tests; docker-compose up --build
+

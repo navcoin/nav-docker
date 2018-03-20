@@ -90,6 +90,7 @@ ARG NAV_REPO=https://github.com/NAVCoin/navcoin-core.git
 
 WORKDIR /tmp
 RUN git clone -b ${NAV_BRANCH} ${NAV_REPO}
+RUN echo "cloning ${NAV_BRANCH} from ${NAV_REPO}"
 
 WORKDIR /tmp/navcoin-core
 RUN ./autogen.sh
