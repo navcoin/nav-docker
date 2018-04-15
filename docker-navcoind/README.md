@@ -13,9 +13,22 @@ To run the service that spawns a Docker container running the navcoind daemon, s
 
 > docker-compose up
 
-To run the service entering an interactive shell, run the command below (developer note):
+If the service is up and running you'll see the following:
 
-> docker-compose exec -ti navcoind-testnet /bin/bash
+> Recreating dockernavcoind_testnet_1 ... done
+> Attaching to dockernavcoind_testnet_1
+
+Then in another shell tab or window you can run commands an interactive shell mode as follows:
+
+> docker exec -ti dockernavcoind_testnet_1 /bin/bash
+
+If that command is successful you should see something like:
+
+> root@a5by28ef4237:/#
+
+From here, you can now start entering rpc commands:
+
+> navcoin-cli -rpcuser=youruser -rpcpassword=yourpass getinfo
 
 ### Docker-compose.yml
 This file describes the parameters used for running the Docker service. From this you can see that:
