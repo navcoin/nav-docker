@@ -1,7 +1,8 @@
 FROM ubuntu:xenial
 
 LABEL maintainer.0="Paul Sanderson" \
-      maintainer.1="Nick Vanbaelen"
+      maintainer.1="Nick Vanbaelen" \
+      maintainer.2="Mike Delucchi"
 
 #--------------------------------------------------------------------------------
 # Add user and group first to make sure their IDs get assigned consistently,
@@ -41,6 +42,7 @@ RUN apt-get install -yq --no-install-recommends libminiupnpc-dev
 RUN apt-get install -yq --no-install-recommends ca-certificates	
 RUN apt-get install -yq --no-install-recommends libunbound-dev
 RUN apt-get install -yq --no-install-recommends git
+RUN apt-get install -yq --no-install-recommends nano
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
