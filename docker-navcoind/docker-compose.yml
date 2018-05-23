@@ -5,7 +5,7 @@ services:
     build:
         context: .
         args:
-            NAV_BRANCH: v4.1.1
+            NAV_BRANCH: v4.2.0-rc
     ports:
       - 44440:44440
       - 44444:44444
@@ -15,4 +15,4 @@ services:
       - "44444"
       - "44445"
     command:
-      - "navcoind -testnet -rpcuser=user -rpcpassword=hi -rpcallowip=0.0.0.0/0"
+      - "navcoind -testnet -rpcuser=user -rpcpassword=hi -rpcallowip=0.0.0.0/0 -ntpminmeasures=0"
