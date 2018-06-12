@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  navcoin-4-2-1:
+    build:
+        context: .
+    ports:
+      - 44440:44440
+      - 44444:44444
+      - 44445:44445
+    expose:
+      - "44440"
+      - "44444"
+      - "44445"
+    command:
+      - "navcoind -rpcuser=user -rpcpassword=rpcpassword -rpcallowip=0.0.0.0/0 -ntpminmeasures=0"
