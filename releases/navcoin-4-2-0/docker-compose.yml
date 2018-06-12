@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  navcoin-4-2-1:
+  navcoin-4-2-0:
     build:
         context: .
     ports:
